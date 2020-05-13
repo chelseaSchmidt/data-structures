@@ -1,8 +1,25 @@
 var Queue = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  let newQueue = Object.create(queueMethods);
+  return newQueue;
 };
 
-var queueMethods = {};
+var queueMethods = {
+  enqueue: function (string) {
+    let maxKey = Math.max(0, ...Object.keys(this));
+    this[maxKey + 1] = string;
+  },
+  dequeue: function () {
+    let minKey = Math.min(...Object.keys(this));
+    let dequeued = this[minKey];
+    delete this[minKey];
+    return dequeued;
+  },
+  size: function () {
+    let numericKeys = Object.keys(this).filter(function(key) {
+      return Number(key);
+    });
+    return numericKeys.length;
+  }
+};
 
 
