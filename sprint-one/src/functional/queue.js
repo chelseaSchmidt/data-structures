@@ -10,8 +10,8 @@ var Queue = function() {
     //Add a string to the back of the queue
 
     //get next available numeric key
-    let keys = Object.keys(someInstance);
-    let nextAvailable = Math.max(...keys) + 1;
+    let keys = Object.keys(storage);
+    let nextAvailable = Math.max(0,...keys) + 1;
     //add value at next available key to storage object
     storage[nextAvailable] = value;
   };
@@ -20,7 +20,7 @@ var Queue = function() {
     //Remove and return the string at the front of the queue
 
     //get minimum numeric key
-    let keys = Object.keys(someInstance);
+    let keys = Object.keys(storage);
     //store value at min key
     let minKey = Math.min(...keys);
     let minVal = storage[minKey];
