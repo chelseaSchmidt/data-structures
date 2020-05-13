@@ -7,7 +7,6 @@ var Stack = function() {
 var stackMethods = {
   push: function(value) {
     let keys = Object.keys(this);
-    //reassign keys to be filtered for only numeric
     keys = keys.filter(function(key) {
       return Number(key);
     });
@@ -16,7 +15,6 @@ var stackMethods = {
   },
   pop: function() {
     let keys = Object.keys(this);
-    //reassign keys to be filtered for only numeric
     keys = keys.filter(function(key) {
       return Number(key);
     });
@@ -26,12 +24,9 @@ var stackMethods = {
     return maxVal;
   },
   size: function() {
-    //get numeric keys
-    //return length of numeric keys
     let keys = Object.keys(this).filter(function(key) {
       return Number(key);
     });
-    console.log(keys);
     return keys.length;
   }
 };
