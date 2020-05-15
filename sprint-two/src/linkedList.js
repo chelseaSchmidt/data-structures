@@ -49,6 +49,9 @@ var LinkedList = function() {
   // check if list contains target value
   list.contains = function(target) {
     // make a variable for the current node we're looking at
+    if (list.head === null) {
+      return false;
+    }
     let currentNode = list[list.head.pointer];
     // while that node is not the right one
     while (currentNode.value !== target) {
