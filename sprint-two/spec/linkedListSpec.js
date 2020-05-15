@@ -52,4 +52,13 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should return nothing if removeHead is called on an empty list', function() {
+    expect(linkedList.removeHead()).to.equal(undefined);
+  })
+
+  it('should return false if contains is called on an empty list', function() {
+    expect(linkedList.contains(1)).to.equal(false);
+  })
+
 });
