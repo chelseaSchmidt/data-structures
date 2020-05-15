@@ -3,15 +3,7 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
 
-  // update the tail property with a new node
-  // if the head is null update that too (it's the same as the tail)
-
   // create a new node with the value and add it to the list
-  // update the tail property to point to that new node
-  // inputs: value to insert
-  // outputs: none, side effect of adding a node to the list
-  // complexity: constant
-  // edge cases: if the head is null, update that too
   list.addToTail = function(value) {
     //create node and pass in value
     let newNode = Node(value);
@@ -32,13 +24,7 @@ var LinkedList = function() {
     list.tail.value = value;
   };
 
-  // use list.head to delete that property from the list
-  // update the head to point to the next node
-  // return the previous head node
-  // inputs: nothing
-  // outputs: value of the removed node, side effect of removing head node
-  // complexity: constant
-  // edge cases: if there's no head, return nothing
+  // remove the first node in the list and return removed value
   list.removeHead = function() {
     // if list.head is null
     if (list.head === null) {
@@ -60,13 +46,7 @@ var LinkedList = function() {
     return oldHeadNode.value;
   };
 
-  // locate a target (ie a value at a key) inside the list
-  // look at the head, if it's not the target look at the next one, etc.
-  // search for the input value, if it's there return true, false otherwise
-  // inputs: target value
-  // output: boolean
-  // complexity: O(n)
-  // edge cases: head/tail is null, return nothing
+  // check if list contains target value
   list.contains = function(target) {
     // make a variable for the current node we're looking at
     let currentNode = list[list.head.pointer];
