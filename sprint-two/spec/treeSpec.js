@@ -41,4 +41,8 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should return false on a childless tree', function() {
+    expect(tree.contains(7)).to.equal(false);
+  });
+
 });
