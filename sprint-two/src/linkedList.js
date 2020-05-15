@@ -76,4 +76,7 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- */
+ * list.contains(): O(n)
+ * list.removeHead(): O(1)
+ * list.addToTail(): O(1)
+*/
