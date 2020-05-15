@@ -53,7 +53,6 @@ var LinkedList = function() {
       list.tail = null;
     } else {
       // update the list.head index to the next node
-      //debugger;
       list.head.pointer = oldHeadNode.next;
       list.head.value = list[list.head.pointer].value;
     }
@@ -70,11 +69,17 @@ var LinkedList = function() {
   // edge cases: head/tail is null, return nothing
   list.contains = function(target) {
     // make a variable for the current node we're looking at
+    let currentNode = list[list.head.pointer];
     // while that node is not the right one
+    while (currentNode.value !== target) {
       // if the next node is empty
-        // return
+      if (currentNode.next === null) {
+        return false;
+      }
       // set the current to the next one
-    // return the current node
+      currentNode = list[currentNode.next];
+    }
+    return true;
   };
 
   return list;
