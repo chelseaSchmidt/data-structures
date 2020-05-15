@@ -1,7 +1,30 @@
 class Stack {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
   constructor() {
+    this.name = 'newStack';
   }
 
+  push(string) {
+    let numericKeys = Object.keys(this).filter(function(key) {
+      return Number(key);
+    });
+    let maxKey = Math.max(0, ...numericKeys);
+    this[maxKey + 1] = string;
+  }
+
+  pop() {
+    let numericKeys = Object.keys(this).filter(function(key) {
+      return Number(key);
+    });
+    let maxKey = Math.max(0, ...numericKeys);
+    let popped = this[maxKey];
+    delete this[maxKey];
+    return popped;
+  }
+
+  size() {
+    let numericKeys = Object.keys(this).filter(function(key) {
+      return Number(key);
+    });
+    return numericKeys.length;
+  }
 }
