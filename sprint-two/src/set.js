@@ -15,8 +15,12 @@ var setPrototype = {};
 // EC: called with no item: do nothing
 //Explanation: Take the input value and add it into the set
 setPrototype.add = function(item) {
-  //push the item into the storage array
-  this._storage.push(item);
+  // get the index of item in the set
+  // if it does not exist
+  if (_.indexOf(this._storage, item) === -1) {
+    //push the item into the storage array
+    this._storage.push(item);
+  }
 };
 
 //Justification: check if a set contains an item

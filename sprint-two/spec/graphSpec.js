@@ -68,4 +68,16 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should do nothing when trying to add a edge between non-existent nodes', function() {
+    expect(graph.addEdge(1, 2)).to.equal(undefined);
+    graph.addNode(1);
+    expect(graph.addEdge(1, 2)).to.equal(undefined);
+  });
+
+  it('should do nothing when trying to remove a edge between non-existent nodes', function() {
+    expect(graph.removeEdge(1, 2)).to.equal(undefined);
+    graph.addNode(1);
+    expect(graph.removeEdge(1, 2)).to.equal(undefined);
+  });
 });

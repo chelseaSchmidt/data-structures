@@ -27,7 +27,7 @@ Insertion:
       if that branch has a node, recur with that node
       otherwise, insert the key at that branch
 
-Deletion:
+Deletion (extra credit):
   take a key (and a current node?)
     search for that key
     if the node has no branches, delete it
@@ -35,10 +35,95 @@ Deletion:
     if the node has two branches
       replace the current node with the in order successor
 */
-var BinarySearchTree = function(value) {
+class BinarySearchTree {
+  constructor (value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  //Justification: take a numeric value and insert it into a valid place in the tree
+  //I: numeric value
+  //O: nothing
+  //SE: modifies the tree
+  //C: O (log n)
+  //E: if either or both branches are null
+  //Explanation: take a numeric value and insert it into a valid place in the tree
+
+  insert (value) {
+    //if value is greater and this.right is null
+    if (value > this.value && this.right === null) {
+      //add a new tree at this.right with value
+      this.right = new BinarySearchTree(value);
+    } else if (value < this.value && this.left === null) {
+    //if value is lesser and this.left is null
+      //add a new tree at this.left
+      this.left = new BinarySearchTree(value);
+    } else if (value !== this.value) {
+      //if value is greater, store this.right; else, store this.left
+      let side = value > this.value ? this.right : this.left;
+      //recurse on the stored tree
+      side.insert(value);
+    }
+  }
+
+  //Justification/Explanation: check if a given value is present in the tree and return boolean if so
+  //I: a target value
+  //O: boolean
+  //SE: none
+  //C: O (log n)
+  //EC: none
+  //
+  contains (target) {
+    //if value is greater and this.right is null
+    if (target > this.value && this.right === null) {
+      //return false
+      return false;
+    } else if (target < this.value && this.left === null) {
+    //if value is lesser and this.left is null
+      //return false
+      return false;
+    } else if (target === this.value) {
+    //if target is equal to this.value,
+      //return true
+      return true;
+    } else {
+    // else
+      //if value is greater, store this.right; else, store this.left
+      let side = target > this.value ? this.right : this.left;
+      //recurse on the stored tree
+      return side.contains(target);
+    }
+  }
+
+  //Justification/explanation: traverse the tree depth-first, running a call on each node
+  //I: a callback function to run on each node
+  //O: none
+  //SE: none-ish
+  //C: O(n)
+  //EC: none
+
+  depthFirstLog (cb) {
+    //run cb on this.value
+    cb(this.value);
+    //if there is a left branch
+    if (this.left !== null) {
+      //recurse on left branch with cb
+      this.left.depthFirstLog(cb);
+    }
+    //if there is a right branch
+    if (this.right !== null) {
+      //recurse on right branch with cb
+      this.right.depthFirstLog(cb);
+    }
+  }
+
 };
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * insert: O(log n)
+ * contains: O(log n)
+ * depthFirstLog: O(n)
  */
