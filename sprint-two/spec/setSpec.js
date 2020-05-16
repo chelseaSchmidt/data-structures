@@ -36,7 +36,7 @@ describe('set', function() {
   it('should have unique values', function() {
     set.add('test');
     set.add('test');
-    expect(set._storage.length).to.equal(1);
+    expect(set._storage._itemCount).to.equal(1);
   });
 
 });

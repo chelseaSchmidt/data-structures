@@ -1,6 +1,6 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set._storage = []; // fix me
+  set._storage = new HashTable();
   return set;
 };
 
@@ -15,12 +15,7 @@ var setPrototype = {};
 // EC: called with no item: do nothing
 //Explanation: Take the input value and add it into the set
 setPrototype.add = function(item) {
-  // get the index of item in the set
-  // if it does not exist
-  if (_.indexOf(this._storage, item) === -1) {
-    //push the item into the storage array
-    this._storage.push(item);
-  }
+  this._storage.insert(item, true);
 };
 
 //Justification: check if a set contains an item
@@ -32,10 +27,7 @@ setPrototype.add = function(item) {
 // EC: empty array
 //Explanation: take the item, look through the storage for a match, return true if match, false if not
 setPrototype.contains = function(target) {
-  //return reduction of all items in set to a true or false value
-  return _.reduce(this._storage, function(doesContain, item) {
-    return doesContain || item === target;
-  }, false);
+  return this._storage.retrieve(target) === true;
 };
 
 //Justification: remove a value from the set
@@ -47,19 +39,12 @@ setPrototype.contains = function(target) {
 // EC: we think none
 //Explanation: Take the input item and check each element of the storage array; if it is the target item, delete it
 setPrototype.remove = function(target) {
-  //for each item in storage...
-  _.each(this._storage, function(item, i, collection) {
-    //if item is equal to target,
-    if (item === target) {
-      //reassign item to undefined
-      collection[i] = undefined;
-    }
-  });
+  this._storage.remove(target);
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  * add: O(1)
- * contains: O(n)
- * remove: O(n)
+ * contains: O(1)
+ * remove: O(1)
  */
