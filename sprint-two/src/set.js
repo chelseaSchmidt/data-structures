@@ -34,9 +34,28 @@ setPrototype.contains = function(target) {
   }, false);
 };
 
-setPrototype.remove = function(item) {
+//Justification: remove a value from the set
+//Spec:
+// I: item to remove
+// O: nothing
+// SE: the set is modified
+// C: O(n)
+// EC: we think none
+//Explanation: Take the input item and check each element of the storage array; if it is the target item, delete it
+setPrototype.remove = function(target) {
+  //for each item in storage...
+  _.each(this._storage, function(item, i, collection) {
+    //if item is equal to target,
+    if (item === target) {
+      //reassign item to undefined
+      collection[i] = undefined;
+    }
+  });
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * add: O(1)
+ * contains: O(n)
+ * remove: O(n)
  */
