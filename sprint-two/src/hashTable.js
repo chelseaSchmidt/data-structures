@@ -41,7 +41,7 @@ HashTable.prototype.retrieve = function(key) {
   }
   //for each tuple in the bucket
   //check if the key matches the first element, if it does
-  let match = _.find(bucket, tuple => tuple[0] === key)
+  let match = _.find(bucket, tuple => tuple[0] === key);
   if (match !== undefined) {
     return match[1];
   }
