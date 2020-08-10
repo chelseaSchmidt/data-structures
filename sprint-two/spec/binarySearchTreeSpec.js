@@ -2,7 +2,7 @@ describe('binarySearchTree', function() {
   var binarySearchTree;
 
   beforeEach(function() {
-    binarySearchTree = BinarySearchTree(5);
+    binarySearchTree = new BinarySearchTree(5);
   });
 
   it('should have methods named "insert", "contains", and "depthFirstLog', function() {
@@ -36,5 +36,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(7);
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
+  });
+
+  it('should ignore insertion of duplicate values', function() {
+    var array = [];
+    var func = function(value) { array.push(value); };
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(1);
+    expect(binarySearchTree.contains(1)).to.equal(true);
+    binarySearchTree.depthFirstLog(func);
+    expect(array).to.eql([5, 1]);
   });
 });

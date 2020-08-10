@@ -24,4 +24,19 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should do nothing when remove is called on an empty set', function() {
+    set.remove('Mel Gibson');
+    expect(set.contains('Mel Gibson')).to.equal(false);
+  });
+
+  it('should return false when called on an empty set', function() {
+    expect(set.contains('Mel Gibson')).to.equal(false);
+  });
+
+  it('should have unique values', function() {
+    set.add('test');
+    set.add('test');
+    expect(set._storage._itemCount).to.equal(1);
+  });
+
 });
